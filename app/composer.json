@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/dotenv": "^4.3",
+        "slim/slim": "^3.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/Api",
+            "Controllers\\": "src/Controllers",
+            "Models\\": "src/Models",
+            "Exceptions\\": "src/Exceptions"
+        }
+    }
+}
