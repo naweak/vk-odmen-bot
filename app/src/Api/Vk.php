@@ -10,6 +10,7 @@ class Vk extends Base
 {
     public $version;
     public $endpoint;
+    public $chatPeerIdMask = 2000000000;
 
     public function __construct ($token, $version)
     {
@@ -37,8 +38,21 @@ class Vk extends Base
         curl_close($curl);
         $response = json_decode($json, true);
         if (!isset($response['response'])) {
-            throw new VkException($response['error']['message'], $response['error']['code']);
+            throw new VkException($response['error']['error_msg'], $response['error']['error_code']);
         }
         return $response['response'];
+    }
+
+    public function getChat ($peerId, $fields = '')
+    {
+        return $this->call('messages.getConversationsById', [
+            'peer_ids' => $peerId,
+            'fields' => $fields
+        ]);
+    }
+
+    public function sendMessage($params) {
+        $params['random_id'] = rand(1, 1000000000);
+        return $this->call('messages.send', $params);
     }
 }

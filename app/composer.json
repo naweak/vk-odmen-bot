@@ -1,7 +1,9 @@
 {
     "require": {
         "symfony/dotenv": "^4.3",
-        "slim/slim": "^3.12"
+        "slim/slim": "^3.12",
+        "lodash-php/lodash-php": "^0.0.6",
+        "gabordemooij/redbean": "^5.3"
     },
     "autoload": {
         "psr-4": {
